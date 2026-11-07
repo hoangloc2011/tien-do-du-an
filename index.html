@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Tiến Độ — Dự án của bạn</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="module" src="assets/app.js"></script>
+</head>
+<body>
+  <section id="lock-screen" class="lock-screen" aria-labelledby="unlock-title">
+    <div class="lock-card">
+      <div class="brand"><img src="assets/icon.svg" width="36" height="36" alt=""><span>Tiến Độ<span class="brand-dot">.</span></span></div>
+      <div class="lock-symbol" aria-hidden="true">⌑</div>
+      <p class="eyebrow">KHÔNG GIAN DỰ ÁN CỦA BẠN</p>
+      <h1 id="unlock-title">Mở tiến độ dự án</h1>
+      <p class="lock-description">Nhập mật khẩu để xem các bước và tiến độ.<br>Dữ liệu được giải mã ngay trên thiết bị này.</p>
+      <form id="unlock-form">
+        <label for="password">Mật khẩu</label>
+        <div class="password-row"><input id="password" type="password" autocomplete="current-password" required maxlength="1024" placeholder="Nhập mật khẩu của bạn"><button id="show-password" class="text-button" type="button" aria-label="Hiện mật khẩu" aria-pressed="false">Hiện</button></div>
+        <p id="unlock-error" class="form-error" role="alert"></p>
+        <button id="unlock-button" class="primary-button" type="submit">Mở không gian dự án <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="privacy-caption"><span aria-hidden="true">●</span> Mật khẩu không được gửi lên máy chủ</p>
+    </div>
+    <p class="lock-footer">Từng dự án. Từng bước. Cùng một nơi.</p>
+  </section>
+
+  <div id="workspace" class="workspace" hidden>
+    <aside class="sidebar">
+      <div class="brand"><img src="assets/icon.svg" width="32" height="32" alt=""><span>Tiến Độ<span class="brand-dot">.</span></span></div>
+      <p class="sidebar-label">KHÔNG GIAN LÀM VIỆC</p>
+      <nav id="areas" aria-label="Lĩnh vực"></nav>
+      <div class="sidebar-footer"><span class="privacy-dot"></span> Đang xem trên thiết bị này<button id="lock-button" class="quiet-button" type="button">Khóa lại <span aria-hidden="true">↗</span></button></div>
+    </aside>
+    <main class="main">
+      <header class="page-header"><div><p class="eyebrow">TỔNG QUAN</p><h1>Dự án của bạn</h1><p class="subtitle">Mở một dự án để xem bạn đang ở bước nào.</p></div><button id="refresh" class="secondary-button" type="button"><span aria-hidden="true">↻</span> Tải bản mới</button></header>
+      <div class="sync-line"><span class="privacy-dot"></span><span id="updated-at"></span><span class="sync-divider">·</span><span id="local-mode">Tự đồng bộ mỗi ngày</span></div>
+      <p id="notice" class="notice" role="status" hidden></p>
+      <section class="stats" aria-label="Tổng hợp dự án"><div><span>Tổng dự án</span><strong id="stat-total">—</strong></div><div><span>Đang thực hiện</span><strong id="stat-active">—</strong></div><div><span>Đã hoàn thành</span><strong id="stat-done">—</strong></div><div><span>Chưa có tiến độ</span><strong id="stat-missing">—</strong></div></section>
+      <div class="toolbar"><div class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Tìm dự án hoặc bước thực hiện…" aria-label="Tìm dự án hoặc bước thực hiện"></div><label class="filter-label">Hiển thị<select id="filter"><option value="ready">Có tiến độ</option><option value="all">Tất cả dự án</option><option value="active">Đang thực hiện</option><option value="done">Đã hoàn thành</option><option value="missing">Chưa có tiến độ</option></select></label></div>
+      <div class="list-heading"><p id="result-count" aria-live="polite"></p><button id="expand-all" class="text-button" type="button">Mở tất cả</button></div>
+      <section id="projects" aria-label="Danh sách dự án"></section>
+      <footer class="main-footer"><span>Dấu tick phản ánh nội dung trong file tiến độ.</span><span>Chỉ đọc · Các bước giữ nguyên thứ tự</span></footer>
+    </main>
+  </div>
+  <dialog id="source-dialog"><div class="dialog-header"><div><p class="eyebrow">NỘI DUNG NGUỒN</p><h2 id="source-title"></h2></div><button id="close-source" class="secondary-button" type="button">Đóng <span aria-hidden="true">×</span></button></div><p id="source-path" class="source-path"></p><pre id="source-text"></pre></dialog>
+</body>
+</html>
