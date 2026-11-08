@@ -34,7 +34,7 @@ export function validateEnvelope(envelope) {
 }
 
 export async function encryptData(data, password) {
-  if (password.length < 16) throw new Error('Dùng mật khẩu ít nhất 16 ký tự hoặc cụm từ dài.');
+  if (password.length < 8) throw new Error('Dùng mật khẩu ít nhất 8 ký tự.');
   const material = await importPassword(password);
   const salt = crypto.getRandomValues(new Uint8Array(32));
   const iv = crypto.getRandomValues(new Uint8Array(12));
